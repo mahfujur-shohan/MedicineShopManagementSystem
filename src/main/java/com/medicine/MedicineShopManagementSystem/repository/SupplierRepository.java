@@ -1,9 +1,9 @@
 package com.medicine.MedicineShopManagementSystem.repository;
 
 import com.medicine.MedicineShopManagementSystem.entity.Supplier;
-import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SupplierRepository extends JpaRepositoryImplementation<Supplier, Integer> {
+public interface SupplierRepository extends JpaRepository<Supplier, Integer> {
 
 
 }
