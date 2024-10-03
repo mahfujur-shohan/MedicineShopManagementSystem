@@ -14,4 +14,6 @@ public interface StockService {
 
     void deleteById(int id);
 
+    long getTotalStocks();
+
 }

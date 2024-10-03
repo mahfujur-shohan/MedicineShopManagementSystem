@@ -4,7 +4,9 @@ import com.medicine.MedicineShopManagementSystem.entity.Stock;
 import com.medicine.MedicineShopManagementSystem.services.StockService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -60,6 +62,17 @@ public class StockController {
         stockService.deleteById(stockId);
 
         return "Stock with id " + stockId + " deleted successfully";
+    }
+
+    // api for stock dashboard
+
+    @GetMapping("/stocks/dashboard")
+    public Map<String, Object> showDashboard() {
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("getTotalStocks", stockService.getTotalStocks());
+
+        return map;
     }
 
 }
