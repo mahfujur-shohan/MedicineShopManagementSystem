@@ -16,4 +16,6 @@ public interface StockService {
 
     long getTotalStocks();
 
+    int getExpiredDrugs();
+
 }

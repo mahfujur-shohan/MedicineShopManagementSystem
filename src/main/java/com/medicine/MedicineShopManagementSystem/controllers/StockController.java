@@ -71,6 +71,7 @@ public class StockController {
         Map<String, Object> map = new HashMap<>();
 
         map.put("getTotalStocks", stockService.getTotalStocks());
+        map.put("getExpiredDrugs", stockService.getExpiredDrugs());
 
         return map;
     }

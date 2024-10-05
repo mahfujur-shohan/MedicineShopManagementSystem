@@ -5,6 +5,8 @@ import com.medicine.MedicineShopManagementSystem.repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,5 +55,26 @@ public class StockServiceImpl implements StockService {
     @Override
     public long getTotalStocks() {
         return stockRepository.count();
+    }
+
+    @Override
+    public int getExpiredDrugs() {
+        LocalDate currentDate = LocalDate.now();
+
+        List<Stock> allStocks = stockRepository.findAll();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        int expiredDrugs = 0;
+
+        for (Stock stock : allStocks) {
+            LocalDate expiredDate = LocalDate.parse(stock.getExpiredDate(), formatter);
+
+            if (expiredDate.isBefore(currentDate)) {
+                expiredDrugs++;
+            }
+        }
+
+        return expiredDrugs;
     }
 }
